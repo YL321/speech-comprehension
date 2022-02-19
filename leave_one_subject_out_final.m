@@ -33,7 +33,7 @@ study_path=fullfile(sprintf('%s%s','/Users/joan/Desktop/hearing/TDT/unsmoothed/'
 % Make the hugest loop
 for m=1:12 
 roi1=m;
-% I change the sequence of the label 
+
 %roi1 = input('roi:(1.L_AnG 2.L_OpIFG 3.L_OrIFG 4.L_TrIFG 5.L_STG 6.L_SMG 7.R_AnG 8. R_OpIFG 9.R_OrIFG 10.R_TrIFG 11.R_STG 12.R_SMG) ')'; %remember to put ' ' ex.'rL_OpIFG'
 if       roi1==1
       roi='L_AnG';
@@ -90,8 +90,8 @@ KDB=KD(7:12);
 KDC=KD(13:20);
 KDD=KD(21:26);
 
-%% create the big loop ---how many times you want to perofrm
-for k=1:J % J= 20, represent the repeat time
+%% create a big loop ---how many times you want to perofrm
+for k=1:J % J= 20, represent the repeat times
  A=(1:6);
  % make the samll loop--- part 1   
   for i3=1:n  % generating the dataframe (training dataset and test dataset)
@@ -112,7 +112,7 @@ A1=A;
 huge_chuck=[KDA(ListA(1:2));KDB(ListB(1:2));KDC(ListC(1:2))]; 
  
  
-% select one vaue from huge_chuck to being test trail
+% select one value from huge_chuck as the test trail
 if mod(i3,6)==1
     testframe.stimuli(i3,1)= huge_chuck(1);
      A1(A(1))=[];
@@ -162,11 +162,7 @@ elseif mod(i3,6)==2
     testframe.stimuli(i3,2)= poor(1);
     trainingframe.stimuli(i3,6:10)=poor(2:6)'; 
     
- % now we can make the frame for people in VB group   
-    
-%     poor=KDD(ListD);
-%     testframe.stimuli(i3,2)= poor(1);
-%     trainingframe.stimuli(i3,6:10)=poor(2:6)'; 
+
     
     
     
@@ -226,7 +222,7 @@ hold on
 line([0.8+0.8*(m-1) 1.2+0.8*(m-1)], [CI_bot(k) CI_bot(k)],'color','k');
 hold on 
 
-% draw the single picture
+% draw the single picture for each ROI decoding result
 figure(m+1)
 % vertical line
 xlim([0 2])
